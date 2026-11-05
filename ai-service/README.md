@@ -1,3 +1,5 @@
+
+
 # 🛰️ SugarCane Satellite Imagery & AI Yield Prediction Service
 
 A Python Flask microservice providing satellite vegetation health indices (NDVI, GNDVI, EVI) and AI-driven harvest yield forecasting for sugarcane crop management.

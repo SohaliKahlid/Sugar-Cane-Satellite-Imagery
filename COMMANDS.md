@@ -93,3 +93,4 @@ netstat -ano | findstr "5000 5001 5173"
 | Backend API | http://localhost:5000 |
 | AI Satellite Service | http://localhost:5001 |
 | AI Health Check | http://localhost:5001/health |
+
