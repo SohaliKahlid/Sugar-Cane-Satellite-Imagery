@@ -32,25 +32,32 @@ The **SugarCane Smart Farming Platform** brings modern technology to agriculture
 
 ---
 
-## 🏗️ Project Architecture
-
-This project is divided into two main parts:
+## 🏗️ Project Architecture (Monorepo)
 
 ```text
-SugarCane-Frontend/
-├── public/                 # Static assets and icons
-├── src/                    # Frontend React application
-│   ├── components/         # Reusable UI components (Navbar, buttons, cards)
-│   ├── context/            # Auth and application state
-│   ├── pages/              # Pages (Dashboard, Map, Fields, Login, Profile)
-│   └── services/           # Backend API connection
-├── SugarCane-Backend/      # Backend Node.js / Express API
-│   ├── config/             # Database connection (MongoDB)
-│   ├── controllers/        # Route logic (Auth, Predictions, Slots, Feedback)
-│   ├── models/             # Database schemas (User, Slot, Prediction, Feedback)
-│   ├── routes/             # API routes
-│   └── server.js           # Server entry point
-└── package.json            # Frontend dependencies and scripts
+SugarCane-Platform/
+├── frontend/                   # Frontend React + Vite application
+│   ├── public/                 # Static assets, icons, and illustrations
+│   ├── src/                    # UI Components, pages, auth context & services
+│   ├── vite.config.js          # Vite build config
+│   └── package.json            # Frontend dependencies
+│
+├── backend/                    # Backend Node.js / Express REST API
+│   ├── config/                 # MongoDB Atlas connection
+│   ├── controllers/            # Route controllers (Auth, Predictions, Slots, Feedback)
+│   ├── models/                 # Mongoose schemas (User, Slot, Prediction, Feedback)
+│   ├── routes/                 # API endpoint routers
+│   ├── server.js               # Server entry point (Port 5000)
+│   └── package.json            # Backend dependencies
+│
+├── ai-service/                 # Python Flask Satellite & AI Microservice
+│   ├── app.py                  # Flask service entry point (Port 5001)
+│   ├── satellite_service.py    # Sentinel-2 vegetation index & yield computation
+│   └── requirements.txt        # Python dependencies
+│
+├── run-all.js                  # Cross-platform runner to launch all 3 services together
+├── package.json                # Root monorepo scripts
+└── README.md
 ```
 
 ---
@@ -59,7 +66,7 @@ SugarCane-Frontend/
 
 - **Frontend:** React, Vite, Tailwind CSS, Lucide Icons, Leaflet (interactive maps), Recharts.
 - **Backend:** Node.js, Express.js, MongoDB (Mongoose), JSON Web Tokens (JWT), Nodemailer.
-- **AI Service:** Flask prediction microservice (computes satellite indices and yield forecasts).
+- **AI Service:** Python, Flask, Flask-CORS, NumPy (computes satellite indices and yield forecasts).
 
 ---
 
@@ -68,62 +75,47 @@ SugarCane-Frontend/
 ### Prerequisites
 Make sure you have installed on your computer:
 - [Node.js](https://nodejs.org/) (version 18 or newer recommended)
-- [MongoDB](https://www.mongodb.com/) (local database or a free MongoDB Atlas connection string)
+- [Python](https://www.python.org/) (version 3.10 or newer)
+- [MongoDB](https://www.mongodb.com/) (local database or free MongoDB Atlas cluster)
 
 ---
 
-### Step 1: Start the Backend
+### ⚡ Method 1: Run All Services with One Command (Recommended)
 
-1. Open your terminal and go to the backend folder:
-   ```bash
-   cd SugarCane-Backend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file inside `SugarCane-Backend/` with the following settings:
-   ```env
-   PORT=5000
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret_key
-   FLASK_API_URL=http://localhost:5001/predict
-   EMAIL_USER=your_email@gmail.com
-   EMAIL_PASS=your_email_app_password
-   ```
-
-4. Run the backend server:
+1. Open a terminal in the project root:
    ```bash
    npm run dev
    ```
-   *The backend will start at `http://localhost:5000`.*
+2. This automatically launches:
+   - 🛰️ **AI Satellite Service** at `http://localhost:5001`
+   - ⚙️ **Backend API** at `http://localhost:5000`
+   - 🖥️ **Frontend Web App** at `http://localhost:5173`
 
 ---
 
-### Step 2: Start the Frontend
+### 🛠️ Method 2: Run Services Individually
 
-1. Open a new terminal in the root project folder (`SugarCane-Frontend`):
-   ```bash
-   cd SugarCane-Frontend
-   ```
+#### 1. AI Satellite Service (Port 5001)
+```bash
+cd ai-service
+# Activate your python virtual environment
+python app.py
+```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+#### 2. Backend API (Port 5000)
+```bash
+cd backend
+npm install
+npm start
+```
+*(Make sure `backend/.env` has your `MONGO_URI` and `JWT_SECRET` configured from `backend/.env.example`)*
 
-3. *(Optional)* If your backend runs on a different address, create a `.env` file in the root folder:
-   ```env
-   VITE_API_BASE=http://localhost:5000
-   ```
-
-4. Start the frontend development server:
-   ```bash
-   npm run dev
-   ```
-   *Open your browser and navigate to the local link shown (typically `http://localhost:5173`).*
+#### 3. Frontend Web App (Port 5173)
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ---
 
@@ -138,17 +130,10 @@ Make sure you have installed on your computer:
 | `/api/predictions/:slotId` | `POST` | Request AI prediction for a specific field slot |
 | `/api/predictions` | `GET` | Get historical predictions for the user |
 | `/api/feedback` | `POST` | Submit feedback |
-
----
-
-## 💡 Notes for Developers
-
-- **AI Microservice:** For full yield calculations and satellite vegetation indices, run the accompanying Flask ML service on port `5001`.
-- **Map Interaction:** Leaflet allows clicking and drawing polygon boundaries directly on the field mapping page.
+| `http://localhost:5001/predict` | `POST` | AI vegetation & crop yield microservice |
 
 ---
 
 ## 🔮 Roadmap & Proposed Features
 
 Looking for ideas on how to expand this project? Check out the [FEATURE_SUGGESTIONS.md](file:///c:/Users/Sohail%20Khalid/Downloads/SugarCane-Frontend/FEATURE_SUGGESTIONS.md) guide for high-impact add-ons like weather & smart irrigation, AI leaf disease detection, and WhatsApp alerts.
-
