@@ -17,7 +17,10 @@ import { MapContainer, TileLayer, Polygon, Rectangle } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const API_BASE = "http://localhost:5000"
+// CURRENT CONFIGURATION: Backend API on port 5005
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5005';
+// ORIGINAL CONFIGURATION: Backend API on default port 5000
+// const API_BASE = 'http://localhost:5000';
 
 // Lower Leaflet z-index so maps never overlap navbar
 const leafletZIndexStyle = `

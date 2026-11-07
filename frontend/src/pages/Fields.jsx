@@ -195,7 +195,8 @@ function Fields() {
         }
       }
       // Optionally, send to model for prediction here
-      // await axios.post("http://localhost:5000/api/predictions", { ... })
+      // CURRENT CONFIGURATION: await axios.post("http://localhost:5005/api/predictions", { ... })
+      // ORIGINAL CONFIGURATION: await axios.post("http://localhost:5000/api/predictions", { ... })
     } catch (err) {
       setError("Failed to send slot and field data to backend")
     }

@@ -37,13 +37,13 @@ npm run dev
 **Or run individually:**
 
 ```bash
-# Frontend only (Port 5173)
+# Frontend only (Current Port: 5175 | Original Port: 5173)
 npm run dev:frontend
 
-# Backend only (Port 5000)
+# Backend only (Current Port: 5005 | Original Port: 5000)
 npm run dev:backend
 
-# AI Service only (Port 5001)
+# AI Service only (Current & Original Port: 5001)
 npm run dev:ai
 ```
 
@@ -73,24 +73,26 @@ git pull origin main
 ## Useful Checks
 
 ```bash
-# Test AI service is running
+# Test AI service is running (Port 5001)
 curl http://localhost:5001/health
 
-# Test backend is running
-curl http://localhost:5000
+# Test backend is running (Current Port 5005 | Original Port 5000)
+curl http://localhost:5005
+# Original: curl http://localhost:5000
 
 # Check which ports are in use (Windows)
-netstat -ano | findstr "5000 5001 5173"
+netstat -ano | findstr "5005 5001 5175"
+# Original ports: netstat -ano | findstr "5000 5001 5173"
 ```
 
 ---
 
 ## URLs When Running
 
-| Service | URL |
-|---|---|
-| Frontend Web App | http://localhost:5173 |
-| Backend API | http://localhost:5000 |
-| AI Satellite Service | http://localhost:5001 |
-| AI Health Check | http://localhost:5001/health |
+| Service | Current URL | Original URL |
+|---|---|---|
+| Frontend Web App | http://localhost:5175 | http://localhost:5173 |
+| Backend API | http://localhost:5005 | http://localhost:5000 |
+| AI Satellite Service | http://localhost:5001 | http://localhost:5001 |
+| AI Health Check | http://localhost:5001/health | http://localhost:5001/health |
 

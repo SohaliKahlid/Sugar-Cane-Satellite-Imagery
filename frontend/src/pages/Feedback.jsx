@@ -9,7 +9,10 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Loader2, MessageCircle, Info } from 'lucide-react';
 import { toast } from 'sonner';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+// CURRENT CONFIGURATION: Backend API on port 5005
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5005';
+// ORIGINAL CONFIGURATION: Backend API on default port 5000
+// const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 
 function validateEmail(email) {
   // Simple email regex

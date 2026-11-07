@@ -35,4 +35,10 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    // CURRENT CONFIGURATION: Alternative port
+    port: 5175,
+    // ORIGINAL CONFIGURATION: Default Vite dev port
+    // port: 5173,
+  },
 })

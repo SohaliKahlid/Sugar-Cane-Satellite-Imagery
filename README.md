@@ -47,7 +47,7 @@ SugarCane-Platform/
 │   ├── controllers/            # Route controllers (Auth, Predictions, Slots, Feedback)
 │   ├── models/                 # Mongoose schemas (User, Slot, Prediction, Feedback)
 │   ├── routes/                 # API endpoint routers
-│   ├── server.js               # Server entry point (Port 5000)
+│   ├── server.js               # Server entry point (Current: Port 5005 | Original: Port 5000)
 │   └── package.json            # Backend dependencies
 │
 ├── ai-service/                 # Python Flask Satellite & AI Microservice
@@ -87,22 +87,22 @@ Make sure you have installed on your computer:
    npm run dev
    ```
 2. This automatically launches:
-   - 🛰️ **AI Satellite Service** at `http://localhost:5001`
-   - ⚙️ **Backend API** at `http://localhost:5000`
-   - 🖥️ **Frontend Web App** at `http://localhost:5173`
+   - 🛰️ **AI Satellite Service** at `http://localhost:5001` (Original: `5001`)
+   - ⚙️ **Backend API** at `http://localhost:5005` (Original: `5000`)
+   - 🖥️ **Frontend Web App** at `http://localhost:5175` (Original: `5173`)
 
 ---
 
 ### 🛠️ Method 2: Run Services Individually
 
-#### 1. AI Satellite Service (Port 5001)
+#### 1. AI Satellite Service (Current & Original Port: 5001)
 ```bash
 cd ai-service
 # Activate your python virtual environment
 python app.py
 ```
 
-#### 2. Backend API (Port 5000)
+#### 2. Backend API (Current Port: 5005 | Original Port: 5000)
 ```bash
 cd backend
 npm install
@@ -110,7 +110,7 @@ npm start
 ```
 *(Make sure `backend/.env` has your `MONGO_URI` and `JWT_SECRET` configured from `backend/.env.example`)*
 
-#### 3. Frontend Web App (Port 5173)
+#### 3. Frontend Web App (Current Port: 5175 | Original Port: 5173)
 ```bash
 cd frontend
 npm install

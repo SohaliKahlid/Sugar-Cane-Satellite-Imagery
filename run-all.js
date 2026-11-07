@@ -47,11 +47,27 @@ const services = [
   }
 ];
 
+// ========================================================
+// PORT CONFIGURATION:
+// CURRENT CONFIGURATION:
+//   - Frontend (Vite):      http://localhost:5175
+//   - Backend (Express):    http://localhost:5005
+//   - AI Service (Flask):   http://localhost:5001
+//
+// ORIGINAL CONFIGURATION:
+//   - Frontend:             http://localhost:5173
+//   - Backend:              http://localhost:5000
+//   - AI Service:           http://localhost:5001
+// ========================================================
+
 const resetColor = '\x1b[0m';
 const activeProcesses = [];
 
 console.log('\x1b[1m\x1b[34m========================================================\x1b[0m');
 console.log('\x1b[1m🌾 Starting SugarCane Smart Farming Platform Services...\x1b[0m');
+console.log('   🌐 Frontend:   \x1b[32mhttp://localhost:5175\x1b[0m  (Original: 5173)');
+console.log('   ⚙️  Backend:    \x1b[36mhttp://localhost:5005\x1b[0m  (Original: 5000)');
+console.log('   🤖 AI Service: \x1b[35mhttp://localhost:5001\x1b[0m  (Original: 5001)');
 console.log('\x1b[1m\x1b[34m========================================================\x1b[0m\n');
 
 services.forEach((srv) => {

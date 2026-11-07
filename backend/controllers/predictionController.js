@@ -14,7 +14,7 @@ export const makePrediction = async (req, res) => {
       return res.status(404).json({ message: 'Slot not found' });
     }
 
-    // Call Flask API for prediction
+    // CURRENT & ORIGINAL CONFIGURATION: Flask AI microservice on port 5001
     const flaskUrl = process.env.FLASK_API_URL || 'http://localhost:5001/predict';
     const flaskRes = await axios.post(flaskUrl, {
       boundary: slot.boundary,

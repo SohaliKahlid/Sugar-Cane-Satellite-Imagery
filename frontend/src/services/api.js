@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+// CURRENT CONFIGURATION: Backend API on port 5005
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5005';
+// ORIGINAL CONFIGURATION: Backend API on default port 5000
+// const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 
 // Create axios instance with default config
 const api = axios.create({
@@ -42,6 +45,7 @@ export const fieldsAPI = {
   deleteField: (id) => api.delete(`/api/slots/${id}`),
   getPredictions: () => api.get('/api/predictions'),
   runPrediction: (fieldId) => api.post(`/api/predictions/${fieldId}`),
+  // CURRENT & ORIGINAL CONFIGURATION: AI Service running on port 5001
   runFlaskPrediction: (fieldId, userId) => axios.post('http://localhost:5001/predict', { slot_id: fieldId, user_id: userId }),
 // runPrediction: (fieldId) => api.post('/predict', { slot_id: fieldId }),
   createSlot: (slotData) => api.post('/api/slots', slotData),

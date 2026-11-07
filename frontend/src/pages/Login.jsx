@@ -14,7 +14,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-const API_BASE = 'http://localhost:5000';
+// CURRENT CONFIGURATION: Backend API on port 5005
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5005';
+// ORIGINAL CONFIGURATION: Backend API on default port 5000
+// const API_BASE = 'http://localhost:5000';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });

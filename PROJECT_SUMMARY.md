@@ -7,11 +7,11 @@ A web platform that helps sugarcane farmers monitor crop health and predict harv
 
 ## Three Services
 
-| Service | Folder | Port | Tech |
-|---|---|---|---|
-| Web App (Frontend) | `frontend/` | 5173 | React, Vite, Tailwind CSS, Leaflet |
-| REST API (Backend) | `backend/` | 5000 | Node.js, Express, MongoDB |
-| AI Microservice | `ai-service/` | 5001 | Python, Flask |
+| Service | Folder | Current Port | Original Port | Tech |
+|---|---|---|---|---|
+| Web App (Frontend) | `frontend/` | 5175 | 5173 | React, Vite, Tailwind CSS, Leaflet |
+| REST API (Backend) | `backend/` | 5005 | 5000 | Node.js, Express, MongoDB |
+| AI Microservice | `ai-service/` | 5001 | 5001 | Python, Flask |
 
 ---
 

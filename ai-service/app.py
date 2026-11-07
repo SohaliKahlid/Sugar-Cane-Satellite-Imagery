@@ -9,6 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
+# CURRENT & ORIGINAL CONFIGURATION: AI Service runs on port 5001
 PORT = int(os.environ.get("PORT", 5001))
 
 @app.route("/", methods=["GET"])
